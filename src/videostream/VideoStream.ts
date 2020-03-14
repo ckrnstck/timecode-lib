@@ -2,15 +2,22 @@ import { ITimecode } from "../timecode/ITimecode";
 
 import { IVideoStream } from "./IVideoStream";
 import { VideoStreamUtility } from "./VideoStreamUtility";
+import { Timecode } from "../timecode/Timecode";
 
 export class VideoStream implements IVideoStream
 {
   private _length: ITimecode;
+  private _position: ITimecode;
   private _framerate: number;
 
-  get length(): ITimecode
+  get length(): Timecode
   {
     return this._length;
+  }
+
+  get position(): Timecode
+  {
+    return this._position;
   }
 
   get framerate(): number
@@ -24,20 +31,20 @@ export class VideoStream implements IVideoStream
     this._framerate = framerate;
   }
 
-  public addFrames(framesToAdd: number): IVideoStream
+  public addFrames(framesToAdd: number): void
   {
     const thisFrames = this.countFrames();
 
     const newFrameCount = thisFrames + framesToAdd;
 
-    return VideoStreamUtility.fromFrameCount(newFrameCount, this.framerate);
+    this._position = VideoStreamUtility.fromFrameCount(newFrameCount, this.framerate).length;
   }
 
-  public seekToPercent(percent: number): IVideoStream
+  public seekToPercent(percent: number): void
   {
     const percentValue = Math.floor((percent * this.countFrames()) / 100);
 
-    return VideoStreamUtility.fromFrameCount(percentValue, this.framerate);
+    this._position = VideoStreamUtility.fromFrameCount(percentValue, this.framerate).length;
   }
 
   public countFrames(): number
