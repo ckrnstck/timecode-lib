@@ -4,6 +4,11 @@
   "version": "0.0.2",
   "main": "dist/index.js",
   "repository": "https://github.com/ckrnstck/timecode-lib",
+  "author": {
+    "name": "Christian Kernstock",
+    "email": "c.kernstock@me.com",
+    "url": "https://ckrnstck.dev"
+  },
   "license": "MIT",
   "scripts": {
     "prepare": "npm run build",
