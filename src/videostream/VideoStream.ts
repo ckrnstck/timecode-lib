@@ -3,6 +3,8 @@ import { ITimecode } from "../timecode/ITimecode";
 import { IVideoStream } from "./IVideoStream";
 import { VideoStreamUtility } from "./VideoStreamUtility";
 import { Timecode } from "../timecode/Timecode";
+import { TimecodeUtility } from "../timecode/TimecodeUtility";
+import { ITimecodeObject } from "../timecode/ITimecodeObject";
 
 export class VideoStream implements IVideoStream
 {
@@ -10,12 +12,12 @@ export class VideoStream implements IVideoStream
   private _position: ITimecode;
   private _framerate: number;
 
-  get length(): Timecode
+  get length(): ITimecode
   {
     return this._length;
   }
 
-  get position(): Timecode
+  get position(): ITimecode
   {
     return this._position;
   }
@@ -29,6 +31,15 @@ export class VideoStream implements IVideoStream
   {
     this._length = length;
     this._framerate = framerate;
+
+    const startPosition: ITimecodeObject = {
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      frames: 0
+    };
+
+    this._position = TimecodeUtility.fromObject(startPosition);
   }
 
   public addFrames(framesToAdd: number): void
