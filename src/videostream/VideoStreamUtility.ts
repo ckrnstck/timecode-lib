@@ -12,7 +12,7 @@ export class VideoStreamUtility
       hours: Math.floor(frameCount / (framerate * 60 * 60)) % 24,
       minutes: Math.floor(frameCount / (framerate * 60)) % 60,
       seconds: Math.floor(frameCount / framerate) % 60,
-      frames: frameCount % framerate
+      frames: Math.floor(frameCount % framerate)
     };
 
     const timecode = TimecodeUtility.fromObject(obj);
