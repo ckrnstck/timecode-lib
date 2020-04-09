@@ -20,6 +20,11 @@ export class Timecode implements ITimecode
       + this.frames.toString().padStart(2, '0');
   }
 
+  public toSeconds(): number
+  {
+    return this.hours * 3600 + this.minutes * 60 + this.seconds;
+  }
+
   public toString()
   {
     return this.toTimecodeString();
