@@ -27,19 +27,17 @@ export class VideoStream implements IVideoStream
     return this._framerate;
   }
 
-  constructor(length: ITimecode, framerate: number)
+  constructor(length: ITimecodeObject, framerate: number)
   {
-    this._length = length;
+    this._length = TimecodeUtility.fromObject(length);
     this._framerate = framerate;
 
-    const startPosition: ITimecodeObject = {
+    this._position = TimecodeUtility.fromObject({
       hours: 0,
       minutes: 0,
       seconds: 0,
       frames: 0
-    };
-
-    this._position = TimecodeUtility.fromObject(startPosition);
+    });
   }
 
   public addFrames(framesToAdd: number): void
