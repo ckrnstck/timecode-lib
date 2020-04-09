@@ -25,6 +25,11 @@ export class Timecode implements ITimecode
     return this.hours * 3600 + this.minutes * 60 + this.seconds;
   }
 
+  public toFrames(fps: number): number
+  {
+    return this.toSeconds() * fps + this.frames;
+  }
+
   public toString()
   {
     return this.toTimecodeString();
