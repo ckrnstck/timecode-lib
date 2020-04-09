@@ -42,9 +42,7 @@ export class VideoStream implements IVideoStream
 
   public addFrames(framesToAdd: number): void
   {
-    const thisFrames = this.countFrames();
-
-    const newFrameCount = thisFrames + framesToAdd;
+    const newFrameCount = this._position.toFrames(this.framerate) + framesToAdd;
 
     this._position = VideoStreamUtility.fromFrameCount(newFrameCount, this.framerate).length;
   }
