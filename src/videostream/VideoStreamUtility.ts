@@ -6,7 +6,7 @@ import { VideoStream } from "./VideoStream";
 
 export class VideoStreamUtility
 {
-  public static fromFrameCount(frameCount: number, framerate: number): IVideoStream
+  public static fromFrameCount(frameCount: number, framerate: number): VideoStream
   {
     const obj: ITimecodeObject = {
       hours: Math.floor(frameCount / (framerate * 60 * 60)) % 24,
@@ -20,7 +20,7 @@ export class VideoStreamUtility
     return new VideoStream(timecode, framerate);
   }
 
-  public static fromSeconds(secondsInput: number, framerate: number): IVideoStream
+  public static fromSeconds(secondsInput: number, framerate: number): VideoStream
   {
     const frames = Math.floor((secondsInput % 1) * framerate);
     let seconds = Math.floor(secondsInput);

@@ -4,12 +4,12 @@ import { Timecode } from "./Timecode";
 
 export class TimecodeUtility
 {
-  public static fromObject(obj: ITimecodeObject): ITimecode
+  public static fromObject(obj: ITimecodeObject): Timecode
   {
     return new Timecode(obj.hours, obj.minutes, obj.seconds, obj.frames);
   }
 
-  public static fromString(input: string): ITimecode
+  public static fromString(input: string): Timecode
   {
     const regExFramesDot = /^\d*:\d*:\d*\.\d*$/ig;
     const regExFramesColon = /^\d*:\d*:\d*\:\d*$/ig;

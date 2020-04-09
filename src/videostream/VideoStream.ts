@@ -8,16 +8,16 @@ import { ITimecodeObject } from "../timecode/ITimecodeObject";
 
 export class VideoStream implements IVideoStream
 {
-  private _length: ITimecode;
-  private _position: ITimecode;
+  private _length: Timecode;
+  private _position: Timecode;
   private _framerate: number;
 
-  get length(): ITimecode
+  get length(): Timecode
   {
     return this._length;
   }
 
-  get position(): ITimecode
+  get position(): Timecode
   {
     return this._position;
   }
