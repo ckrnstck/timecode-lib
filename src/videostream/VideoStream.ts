@@ -1,10 +1,4 @@
-import { ITimecode } from "../timecode/ITimecode";
-
-import { IVideoStream } from "./IVideoStream";
-import { VideoStreamUtility } from "./VideoStreamUtility";
-import { Timecode } from "../timecode/Timecode";
-import { TimecodeUtility } from "../timecode/TimecodeUtility";
-import { ITimecodeObject } from "../timecode/ITimecodeObject";
+import { ITimecodeObject, Timecode, TimecodeUtility, IVideoStream, VideoStreamUtility } from '../';
 
 export class VideoStream implements IVideoStream
 {
