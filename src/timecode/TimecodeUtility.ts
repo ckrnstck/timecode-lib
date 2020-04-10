@@ -14,11 +14,11 @@ export class TimecodeUtility
     const regExFramesDot = /^\d*:\d*:\d*\.\d*$/ig;
     const regExFramesColon = /^\d*:\d*:\d*\:\d*$/ig;
 
-    const colonParts = input.split(':');
+    const timeParts = input.split(':');
 
-    let hours: number = parseInt(colonParts[0]);
-    let minutes: number = parseInt(colonParts[1]);
-    let seconds: number = parseInt(colonParts[2]);
+    let hours: number = parseInt(timeParts[0]);
+    let minutes: number = parseInt(timeParts[1]);
+    let seconds: number = parseInt(timeParts[2]);
     let frames = 0;
 
     if (input.match(regExFramesDot) != null)
@@ -28,7 +28,7 @@ export class TimecodeUtility
     }
     else if (input.match(regExFramesColon) != null)
     {
-      frames = parseInt(colonParts[3]);
+      frames = parseInt(timeParts[3]);
     }
 
     const obj = {
